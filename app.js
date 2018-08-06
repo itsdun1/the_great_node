@@ -11,6 +11,8 @@ hbs.registerHelper("current_month", ()=>{
 hbs.registerHelper("arg_helper",(text)=>{
   return   text.toUpperCase;
 })
+
+var port = process.env || 3000;
 app.use((req,res,next)=>{
     console.log(`${req.method}`)
     var date= new Date().toString();
@@ -51,6 +53,6 @@ app.get("/bad",(req,res)=>{
     })
 })
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log("server has started on port 3000");
 });
