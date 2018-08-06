@@ -27,9 +27,14 @@ app.use((req,res,next)=>{
     next();
 })
 
-app.use((req,res,next)=>{
-    res.render('mainta');
+
+hbs.registerHelper("title",()=>{
+    return "the great Node"
 })
+
+// app.use((req,res,next)=>{
+//     res.render('mainta');
+// })
 
 
 
@@ -39,12 +44,16 @@ app.get("/",(req,res)=>{
         aboutText:"welcome to the home page",
         todayDate :new Date().getDate(),
         dynamic:"yes this is dynamic this is loading from outside not inside",
-        todayYear: new Date().getFullYear()
+        todayYear: new Date().getFullYear(),
+        
     });
 });
 
 app.get("/about",(req,res)=>{
-    res.send("this is written by aSBJKANSJKNAJK");
+    res.render("about",{
+        todayYear:new Date().getFullYear(),
+
+    })
 
 })
 app.get("/bad",(req,res)=>{
