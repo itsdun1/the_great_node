@@ -12,7 +12,7 @@ hbs.registerHelper("arg_helper",(text)=>{
   return   text.toUpperCase;
 })
 
-var port = process.env || 3000;
+var port = process.env.PORT || 3000;
 app.use((req,res,next)=>{
     console.log(`${req.method}`)
     var date= new Date().toString();
